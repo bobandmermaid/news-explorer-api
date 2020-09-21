@@ -2,7 +2,7 @@
   "name": "news-explorer-api",
   "version": "1.0.0",
   "description": "diploma project news-explorer",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app",
     "dev": "nodemon app"
