@@ -43,7 +43,6 @@ module.exports.login = async (req, res, next) => {
         sameSite: true,
       });
     return res.send({
-      message: 'Successfully!',
       jwt: token,
     });
   } catch (err) {

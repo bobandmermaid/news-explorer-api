@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const UnauthorizedError = require('../errors/unauthorized-err');
+const { TRIM, EMAIL, INCORRECT_LOGIN } = require('../errors/messageError');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => validator.trim(v),
-      message: 'Spaces are not allowed',
+      message: TRIM,
     },
     minlength: 2,
     maxlength: 30,
@@ -20,7 +21,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: (v) => validator.isEmail(v),
-      message: (props) => `${props.value} Invalid email`,
+      message: (props) => `${props.value} ${EMAIL}`,
     },
   },
   password: {
@@ -37,13 +38,13 @@ userSchema.statics.findUserByCredentials = function loginController(email, passw
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        return Promise.reject(new UnauthorizedError('Incorrect email or password'));
+        return Promise.reject(new UnauthorizedError(INCORRECT_LOGIN));
       }
 
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            return Promise.reject(new UnauthorizedError('Incorrect email or password'));
+            return Promise.reject(new UnauthorizedError(INCORRECT_LOGIN));
           }
 
           return user;

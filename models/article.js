@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const URL = require('../errors/messageError');
 
 const cardSchema = new mongoose.Schema({
   keyword: {
@@ -28,7 +29,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => validator.isURL(v),
-      message: (props) => `${props.value} Invalid address`,
+      message: (props) => `${props.value} ${URL}`,
     },
   },
   image: {
@@ -36,7 +37,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => validator.isURL(v),
-      message: (props) => `${props.value} Invalid address`,
+      message: (props) => `${props.value} ${URL}`,
     },
   },
   owner: {

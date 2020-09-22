@@ -2,6 +2,7 @@
 const Article = require('../models/article');
 const NotFoundError = require('../errors/not-found-err');
 const ForbiddenError = require('../errors/forbidden-err');
+const { ARTICLE_MISSING, ARTICLE_PERMISSION } = require('../errors/messageError');
 
 module.exports.getArticle = async (req, res, next) => {
   try {
@@ -38,10 +39,10 @@ module.exports.deleteArticle = async (req, res, next) => {
   try {
     const articleObj = await Article.findById(articleId)
       .select('+owner')
-      .orFail(() => new NotFoundError('Article missing'));
+      .orFail(() => new NotFoundError(ARTICLE_MISSING));
 
     if (userId !== articleObj.owner.toString()) {
-      throw new ForbiddenError('You can\'t delete someone else\'s article');
+      throw new ForbiddenError(ARTICLE_PERMISSION);
     }
     const card = await Article.findOneAndRemove({ _id: articleId, owner: userId });
     return res.send(card);
