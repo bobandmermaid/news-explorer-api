@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/bobandmermaid/news-explorer-api#readme",
   "devDependencies": {
-    "eslint": "^7.5.0",
+    "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "celebrate": "^12.2.0",
     "cookie-parser": "^1.4.5",
