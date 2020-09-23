@@ -24,7 +24,10 @@ const EMAIL_USE = 'This email is already in use';
 const TRIM = 'Spaces are not allowed';
 const INCORRECT_LOGIN = 'Incorrect email or password';
 
+const NOT_FOUND = 'The requested resource is not found';
+
 module.exports = {
+  NOT_FOUND,
   INCORRECT_LOGIN,
   TRIM,
   CAST_ERR,

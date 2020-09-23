@@ -4,7 +4,7 @@ const NotFoundError = require('../errors/not-found-err');
 const ForbiddenError = require('../errors/forbidden-err');
 const { ARTICLE_MISSING, ARTICLE_PERMISSION } = require('../errors/messageError');
 
-module.exports.getArticle = async (req, res, next) => {
+module.exports.getArticles = async (req, res, next) => {
   try {
     const article = await Article.find({})
       .populate('owner');
