@@ -5,13 +5,11 @@ const { AUTH } = require('../errors/messageError');
 require('dotenv').config();
 
 module.exports.auth = (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (!authorization || !authorization.startsWith('Bearer ')) {
+  if (!req.cookies.jwt) {
     throw new UnauthorizedError(AUTH);
   }
 
-  const token = authorization.replace('Bearer ', '');
+  const token = req.cookies.jwt;
 
   let payload;
 
