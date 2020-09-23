@@ -16,7 +16,7 @@ const ARTICLE_PERMISSION = 'You can\'t delete someone else\'s article';
 
 const NO_USER = 'There is no such user';
 
-const AUTHORIZATION = 'Authorization required';
+const AUTH = 'Authorization required';
 
 const CAST_ERR = 'ID not found';
 const EMAIL_USE = 'This email is already in use';
@@ -32,7 +32,7 @@ module.exports = {
   TRIM,
   CAST_ERR,
   EMAIL_USE,
-  AUTHORIZATION,
+  AUTH,
   NO_USER,
   ARTICLE_MISSING,
   ARTICLE_PERMISSION,

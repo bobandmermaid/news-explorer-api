@@ -1,14 +1,14 @@
 /* eslint-disable consistent-return */
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/unauthorized-err');
-const { AUTHORIZATION } = require('../errors/messageError');
+const { AUTH } = require('../errors/messageError');
 require('dotenv').config();
 
 module.exports.auth = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new UnauthorizedError(AUTHORIZATION);
+    throw new UnauthorizedError(AUTH);
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -21,7 +21,7 @@ module.exports.auth = (req, res, next) => {
     payload = jwt.verify(token,
       NODE_ENV === 'production' ? JWT_SECRET : 'some-strong-secret');
   } catch (err) {
-    throw new UnauthorizedError(AUTHORIZATION);
+    throw new UnauthorizedError(AUTH);
   }
 
   req.user = payload;
