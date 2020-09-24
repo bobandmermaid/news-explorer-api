@@ -47,8 +47,8 @@ module.exports.deleteArticle = async (req, res, next) => {
     if (userId !== articleObj.owner.toString()) {
       throw new ForbiddenError(ARTICLE_PERMISSION);
     }
-    const card = await Article.findOneAndRemove({ _id: articleId, owner: userId });
-    return res.send(card);
+    const article = await Article.findOneAndRemove({ _id: articleId, owner: userId });
+    return res.send(article);
   } catch (err) {
     return next(err);
   }
