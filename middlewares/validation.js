@@ -44,9 +44,9 @@ const createArticleValid = celebrate({
 const createUserValid = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30)
-      .error(new Error(`${EMPTY_FIELD}${NAME}`)),
+      .error(new Error(NAME)),
     email: Joi.string().required().email()
-      .error(new Error(`${EMPTY_FIELD}${EMAIL}`)),
+      .error(new Error(EMAIL)),
     password: Joi.string().pattern(
       new RegExp('^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%#? "])(?=\\S+$).*$'),
     ).error(new Error(PASSWORD_SIGNUP)),
@@ -57,9 +57,9 @@ const createUserValid = celebrate({
 const loginValid = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email()
-      .error(new Error(`${EMPTY_FIELD}${EMAIL}`)),
+      .error(new Error(EMAIL)),
     password: Joi.string().required().min(8)
-      .error(new Error(`${EMPTY_FIELD}${PASSWORD}`)),
+      .error(new Error(PASSWORD)),
   }),
 });
 
