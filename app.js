@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const limiter = require('./middlewares/limiter');
 const InValidUrl = require('./InValidUrl');
 const HandlerError = require('./middlewares/HandlerError');
+const loggerPath = require('./middlewares/loggerPath');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -26,6 +27,7 @@ mongoose.connect(DB_CONN, {
   useUnifiedTopology: true,
 });
 
+app.use(loggerPath);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

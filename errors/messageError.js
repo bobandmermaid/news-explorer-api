@@ -1,3 +1,4 @@
+// Сообщения ошибок
 const ID = 'invalid ID';
 const EMPTY_FIELD = 'The line is not filled. ';
 const KEYWORD = 'Keyword missing';

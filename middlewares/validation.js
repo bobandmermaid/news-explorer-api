@@ -16,6 +16,7 @@ const {
 
 Joi.objectId = require('joi-objectid')(Joi);
 
+// Валидация запросов
 const idValid = celebrate({
   params: Joi.object().keys({
     articleId: Joi.objectId()
@@ -25,15 +26,15 @@ const idValid = celebrate({
 
 const createArticleValid = celebrate({
   body: Joi.object().keys({
-    keyword: Joi.string().required()
+    keyword: Joi.string().required().trim()
       .error(new Error(`${EMPTY_FIELD}${KEYWORD}`)),
-    title: Joi.string().required()
+    title: Joi.string().required().trim()
       .error(new Error(`${EMPTY_FIELD}${TITLE}`)),
-    text: Joi.string().required()
+    text: Joi.string().required().trim()
       .error(new Error(`${EMPTY_FIELD}${TEXT}`)),
-    date: Joi.string().required()
+    date: Joi.string().required().trim()
       .error(new Error(`${EMPTY_FIELD}${DATE}`)),
-    source: Joi.string().required()
+    source: Joi.string().required().trim()
       .error(new Error(`${EMPTY_FIELD}${SOURCE}`)),
     link: Joi.required().custom((v) => validUrl(v)),
     image: Joi.required().custom((v) => validUrl(v)),

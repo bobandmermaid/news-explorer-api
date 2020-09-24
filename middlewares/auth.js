@@ -4,6 +4,7 @@ const UnauthorizedError = require('../errors/unauthorized-err');
 const { AUTH } = require('../errors/messageError');
 require('dotenv').config();
 
+// Авторизация
 module.exports.auth = (req, res, next) => {
   if (!req.cookies.jwt) {
     throw new UnauthorizedError(AUTH);

@@ -1,3 +1,4 @@
+// Обработчик ошибок
 const { CAST_ERR, EMAIL_USE } = require('../errors/messageError');
 
 function HandlerError(err, req, res, next) {

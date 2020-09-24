@@ -4,6 +4,7 @@ const NotFoundError = require('../errors/not-found-err');
 const ForbiddenError = require('../errors/forbidden-err');
 const { ARTICLE_MISSING, ARTICLE_PERMISSION } = require('../errors/messageError');
 
+// Получение всех статей
 module.exports.getArticles = async (req, res, next) => {
   try {
     const article = await Article.find({})
@@ -16,6 +17,7 @@ module.exports.getArticles = async (req, res, next) => {
   }
 };
 
+// Создание статей
 module.exports.createArticle = async (req, res, next) => {
   const {
     keyword, title, text, date, source, link, image,
@@ -33,6 +35,7 @@ module.exports.createArticle = async (req, res, next) => {
   }
 };
 
+// Удаление статьи
 module.exports.deleteArticle = async (req, res, next) => {
   const { articleId } = req.params;
   const userId = req.user._id;
