@@ -29,6 +29,7 @@
 ### Доступ к серверу
 + IP адрес: http://178.154.225.31
 + Бэкенд проекта: https://api.newsexplorer.ru/          
++ https://newsexplorer.ru/
 
 ### Развертывание проекта
 1. Установить `Node.js`
