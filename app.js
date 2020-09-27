@@ -5,8 +5,8 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const limiter = require('./middlewares/limiter');
-const InValidUrl = require('./InValidUrl');
-const HandlerError = require('./middlewares/HandlerError');
+const inValidUrl = require('./inValidUrl');
+const handlerError = require('./middlewares/handlerError');
 const loggerPath = require('./middlewares/loggerPath');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -37,11 +37,11 @@ app.use(requestLogger);
 
 app.use(router);
 
-app.use('*', InValidUrl);
+app.use('*', inValidUrl);
 app.use(errorLogger);
 
 app.use(errors());
-app.use('/', HandlerError);
+app.use('/', handlerError);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
