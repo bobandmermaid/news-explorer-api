@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
 const NO_USER = require('../errors/messageError');

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -45,5 +44,6 @@ app.use('*', InValidUrl);
 app.use('/', HandlerError);
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Порт: ${PORT}`);
 });
