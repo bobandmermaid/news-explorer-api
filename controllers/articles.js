@@ -39,14 +39,14 @@ module.exports.deleteArticle = async (req, res, next) => {
   const { articleId } = req.params;
   const userId = req.user._id;
   try {
-    const articleObj = await Article.findById(articleId)
+    const article = await Article.findById(articleId)
       .select('+owner')
       .orFail(() => new NotFoundError(ARTICLE_MISSING));
 
-    if (userId !== articleObj.owner.toString()) {
+    if (userId !== article.owner.toString()) {
       throw new ForbiddenError(ARTICLE_PERMISSION);
     }
-    const article = await Article.findOneAndRemove({ _id: articleId, owner: userId });
+    await Article.deleteOne(article);
     return res.send(article);
   } catch (err) {
     return next(err);
