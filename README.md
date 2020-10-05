@@ -26,7 +26,7 @@
 `MongoDB`   
 `ESlint`
 
-### Доступ к серверу
+### Доступ к серверу(пока отключён!)
 + IP адрес: http://178.154.225.31
 + Бэкенд проекта: https://api.newsexplorer.ru/          
 + https://newsexplorer.ru/
