@@ -27,12 +27,23 @@ mongoose.connect(DB_CONN, {
   useUnifiedTopology: true,
 });
 
+const whiteList = [
+  'https://bobandmermaid.github.io',
+  'http://bobandmermaid.github.io',
+  'http://localhost:8081',
+  'http://api.newsexplorer.ru',
+  'https://api.newsexplorer.ru',
+  'http://newsexplorer.ru',
+  'https://newsexplorer.ru'];
+
 const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'https://newsexplorer.ru',
-    'http://newsexplorer.ru',
-  ],
+  origin: (origin, callback) => {
+    if (whiteList.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 };
 
