@@ -20,8 +20,6 @@ const {
 
 const app = express();
 
-app.use(cors());
-
 mongoose.connect(DB_CONN, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -35,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(limiter);
 app.use(helmet());
+app.use(cors({ credentials: true, origin: true }));
 
 app.use(requestLogger);
 
