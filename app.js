@@ -27,16 +27,24 @@ mongoose.connect(DB_CONN, {
   useUnifiedTopology: true,
 });
 
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://newsexplorer.ru',
+    'http://newsexplorer.ru',
+  ],
+  credentials: true,
+};
+
 app.use(loggerPath);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(limiter);
 app.use(helmet());
-app.use(cors({ credentials: true, origin: true }));
-
 app.use(requestLogger);
 
+app.use(cors(corsOptions));
 app.use(router);
 
 app.use('*', inValidUrl);
