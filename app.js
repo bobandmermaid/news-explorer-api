@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const limiter = require('./middlewares/limiter');
@@ -18,6 +19,8 @@ const {
 } = process.env;
 
 const app = express();
+
+app.use(cors());
 
 mongoose.connect(DB_CONN, {
   useNewUrlParser: true,
