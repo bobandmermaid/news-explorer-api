@@ -37,6 +37,7 @@ const corsOptions = {
     'https://api.newsexplorer.ru',
     'http://newsexplorer.ru',
     'https://newsexplorer.ru',
+    'https://api.newsexplorer.ru/users/me',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
