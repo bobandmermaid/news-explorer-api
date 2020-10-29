@@ -56,7 +56,7 @@ module.exports.logout = (req, res) => {
     maxAge: 3600000 * 24 * 7,
     httpOnly: true,
     sameSite: true,
-  });
+  }).end();
 };
 
 // module.exports.logout = (req, res, next) => {
