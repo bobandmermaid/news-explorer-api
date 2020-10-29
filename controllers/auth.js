@@ -53,7 +53,7 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.logout = (req, res) => {
   res.clearCookie('jwt', {
-    maxAge: 0,
+    maxAge: 3600000 * 24 * 7,
     httpOnly: true,
     sameSite: true,
   });
