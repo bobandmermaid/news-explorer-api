@@ -50,3 +50,15 @@ module.exports.login = async (req, res, next) => {
     return next(err);
   }
 };
+
+// module.exports.logout = (req, res) => {
+//   res.clearCookie('jwt').end();
+// };
+
+module.exports.logout = (req, res, next) => {
+  try {
+    return res.clearCookie('jwt').end();
+  } catch (err) {
+    return next();
+  }
+};
