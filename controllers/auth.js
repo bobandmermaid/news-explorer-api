@@ -51,19 +51,19 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
-// module.exports.logout = (req, res) => {
-//   res.clearCookie('jwt').end();
-// };
-
-module.exports.logout = (req, res, next) => {
-  try {
-    return res.cookie('jwt', '', {
-      maxAge: 0,
-      httpOnly: true,
-      sameSite: true,
-    })
-      .send({});
-  } catch (err) {
-    return next();
-  }
+module.exports.logout = (req, res) => {
+  res.clearCookie('jwt').end();
 };
+
+// module.exports.logout = (req, res, next) => {
+//   try {
+//     return res.cookie('jwt', '', {
+//       maxAge: 0,
+//       httpOnly: true,
+//       sameSite: true,
+//     })
+//       .send({});
+//   } catch (err) {
+//     return next();
+//   }
+// };
