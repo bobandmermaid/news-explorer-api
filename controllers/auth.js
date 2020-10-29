@@ -57,7 +57,7 @@ module.exports.logout = (req, res) => {
     httpOnly: true,
     sameSite: true,
   });
-  return res.cookie('jwt', '').end();
+  res.clearCache().end();
 };
 
 // module.exports.logout = (req, res, next) => {
