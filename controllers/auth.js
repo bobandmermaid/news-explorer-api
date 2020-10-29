@@ -60,7 +60,9 @@ module.exports.logout = (req, res, next) => {
     return res.cookie('jwt', '', {
       maxAge: 0,
       httpOnly: true,
-    });
+      sameSite: true,
+    })
+      .send({});
   } catch (err) {
     return next();
   }
