@@ -62,12 +62,7 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.logout = (req, res, next) => {
   try {
-    return res.cookie('jwt', '', {
-      maxAge: 3600000 * 24 * 7,
-      httpOnly: true,
-      sameSite: true,
-    })
-      .end({});
+    return res.clearCookie('jwt').end();
   } catch (err) {
     return next();
   }
