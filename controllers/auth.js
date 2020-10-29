@@ -51,24 +51,24 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
-module.exports.logout = (req, res) => {
-  res.clearCookie('jwt', {
-    maxAge: 3600000 * 24 * 7,
-    httpOnly: true,
-    sameSite: true,
-  });
-  res.clearCache().end();
-};
-
-// module.exports.logout = (req, res, next) => {
-//   try {
-//     return res.cookie('jwt', '', {
-//       maxAge: 0,
-//       httpOnly: true,
-//       sameSite: true,
-//     })
-//       .send({});
-//   } catch (err) {
-//     return next();
-//   }
+// module.exports.logout = (req, res) => {
+//   res.clearCookie('jwt', {
+//     maxAge: 3600000 * 24 * 7,
+//     httpOnly: true,
+//     sameSite: true,
+//   });
+//   return res.cookie('jwt', '').end();
 // };
+
+module.exports.logout = (req, res, next) => {
+  try {
+    return res.cookie('jwt', '', {
+      maxAge: 3600000 * 24 * 7,
+      httpOnly: true,
+      sameSite: true,
+    })
+      .end({});
+  } catch (err) {
+    return next();
+  }
+};
