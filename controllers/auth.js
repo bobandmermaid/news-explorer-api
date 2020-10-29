@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const escape = require('escape-html');
+const merge = require('nodemon');
 const User = require('../models/user');
 
 require('dotenv').config();
@@ -57,7 +58,9 @@ module.exports.logout = (req, res) => {
     httpOnly: true,
     sameSite: true,
   });
-  return res.cookie('', '');
+  // eslint-disable-next-line no-undef
+  const opts = merge({ expires: new Date(1), path: '/' });
+  return res.cookie('', '', opts);
 };
 
 // module.exports.logout = (req, res, next) => {
