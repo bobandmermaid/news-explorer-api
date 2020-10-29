@@ -41,7 +41,7 @@ module.exports.login = async (req, res, next) => {
       .cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite: true,
+        sameSite: 'lax',
       });
     return res.send({
       jwt: token,
@@ -52,7 +52,7 @@ module.exports.login = async (req, res, next) => {
 };
 
 module.exports.logout = (req, res) => {
-  res.clearCookie('jwt').end();
+  res.clearCookie('jwt', { path: '/' }).end();
 };
 
 // module.exports.logout = (req, res, next) => {
