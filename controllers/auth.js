@@ -60,9 +60,9 @@ module.exports.login = async (req, res, next) => {
 //   return res.cookie('jwt', '').end();
 // };
 
-module.exports.logout = (req, res, next) => {
+module.exports.logout = async (req, res, next) => {
   try {
-    return res.clearCookie('jwt').end();
+    return await res.clearCookie('jwt').end();
   } catch (err) {
     return next();
   }
