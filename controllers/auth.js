@@ -60,13 +60,10 @@ module.exports.login = async (req, res, next) => {
 //   return res.cookie('jwt', '').end();
 // };
 
-module.exports.logout = async (req, res, next) => {
+module.exports.logout = (req, res, next) => {
   try {
-    return await res.clearCookie('jwt', {
-      maxAge: 3600000 * 24 * 7,
-      httpOnly: true,
-      sameSite: true,
-    }).end();
+    res.clearCookie('jwt');
+    return res.status(200).send('User logged out successfully');
   } catch (err) {
     return next();
   }
