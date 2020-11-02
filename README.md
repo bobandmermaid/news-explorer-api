@@ -28,7 +28,7 @@
 `ESlint`
 
 ### Доступ к серверу
-+ IP адрес: http://84.201.130.200
++ IP адрес: http://178.154.231.200
 + Бэкенд проекта: https://api.newsexplorer.ru/          
 + https://newsexplorer.ru/
 
