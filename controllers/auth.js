@@ -42,6 +42,7 @@ module.exports.login = async (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
+        // ОТКЛЮЧИТЬ для запуска на локалке
         secure: true,
       });
     return res.send({
@@ -52,21 +53,13 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
-// module.exports.logout = (req, res) => {
-//   res.clearCookie('jwt', {
-//     maxAge: 3600000 * 24 * 7,
-//     httpOnly: true,
-//     sameSite: true,
-//   });
-//   return res.cookie('jwt', '').end();
-// };
-
 module.exports.logout = async (req, res, next) => {
   try {
     return await res.clearCookie('jwt', {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
       sameSite: 'none',
+      // ОТКЛЮЧИТЬ для запуска на локалке
       secure: true,
     })
       .send('User logged out successfully');
