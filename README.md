@@ -7,9 +7,9 @@
 `Дипломный проект сделанный для Яндекс.Практикум`
 
 ### Функциональность
-    Запросы с сервера - https://api.newsexplorer.ru/        
+    Локально - http://localhost:3000
     отправлять через Postman
-    
+
     POST /signup — регистрация пользователя с переданными в теле запроса:    
      name, email, password
     POST /signin — авторизация пользователя по email и password 
@@ -26,10 +26,8 @@
 `MongoDB`   
 `ESlint`
 
-### Доступ к серверу
-+ IP адрес: http://178.154.225.31
-+ Бэкенд проекта: https://api.newsexplorer.ru/          
-+ https://newsexplorer.ru/
+### Фронтенд проекта
++ https://github.com/bobandmermaid/news-explorer-frontend
 
 ### Развертывание проекта
 1. Установить `Node.js`
