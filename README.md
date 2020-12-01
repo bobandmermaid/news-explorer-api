@@ -29,9 +29,6 @@
 ### Фронтенд проекта
 + https://github.com/bobandmermaid/news-explorer-frontend
 
-### Фронтенд проекта
-+ https://github.com/bobandmermaid/news-explorer-frontend
-
 ### Развертывание проекта
 1. Установить `Node.js`
 2. Клонировать репозиторий `https://github.com/bobandmermaid/news-explorer-api.git`
