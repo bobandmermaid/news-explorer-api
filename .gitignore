@@ -11,6 +11,4 @@ node_modules
 
 # Optional REPL history
 .idea
-
-.env
-
+.history
